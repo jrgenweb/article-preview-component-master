@@ -11,8 +11,6 @@
     --transition-delay: 0.3s;
 }
 
-html {
-}
 body {
     font-family: "Manrope";
     font-size: 0.8125rem;
@@ -38,30 +36,37 @@ h2 {
 h3 {
     font-size: 0.8125rem;
     font-weight: var(--fw-700);
+    letter-spacing: 0.12px;
+    line-height: 1.25rem;
 }
 p {
     padding: 1rem 0;
     color: var(--clr-400);
+    line-height: 1.25rem;
+    font-size: 0.8125rem;
+    letter-spacing: 0.12px;
 }
 .card {
     background-color: #fff;
-
     border-radius: var(--br-radius);
     box-shadow: 0px 0px 40px -20px var(--clr-400);
 }
-.card img {
+.card__image {
     width: 100%;
+
+    object-fit: cover;
+    object-position: 0 -15px;
     border-radius: var(--br-radius) var(--br-radius) 0 0;
 }
 .card__body {
-    padding: 2rem;
+    padding: 2rem 2rem 1rem 2rem;
 }
 
 .card__author {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-top: 1.5rem;
+    padding-top: 0.75rem;
     position: relative;
 }
 .card__author .image {
@@ -94,16 +99,28 @@ p {
     transition: translate 1s ease;
 }
 
-.social {
-    --spacing: 2rem;
+.share_plugin {
     position: absolute;
-    background-color: var(--clr-600);
     --spacing: 2rem;
     width: calc(100% + var(--spacing) * 2);
     height: calc(100% + 1rem);
     left: calc(var(--spacing) * -1);
     bottom: calc(var(--spacing) * -1);
+}
+.share {
+    position: absolute;
+    right: 32px;
+    top: -12px;
+}
+.social {
+    background-color: var(--clr-600);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    bottom: 0;
     border-radius: 0 0 var(--br-radius) var(--br-radius);
+
     opacity: 0;
 
     overflow: hidden;
@@ -132,7 +149,7 @@ p {
 
 .share:has(+ .social.active) {
     background-color: #6e8098;
-    top: 10px;
+    top: 20px;
 }
 .share:has(+ .social.active) svg path {
     fill: var(--clr-100);
@@ -164,11 +181,10 @@ p {
         display: flex;
         flex-direction: row;
     }
-    .card .card_image {
+    .card .card__image {
         max-width: 285px;
         object-fit: cover;
         object-position: left;
-
         border-radius: var(--br-radius) 0 0 var(--br-radius);
     }
     .card__author {
@@ -176,19 +192,21 @@ p {
     }
 
     .social {
-        opacity: 1;
+        opacity: 0;
         border-radius: var(--br-radius);
-        padding: 1rem 2rem;
+        padding: 1.5rem 2rem;
         width: auto;
-        top: -20px;
-        bottom: -30px;
+        left: 50%;
+        translate: -50%;
+        top: -80px;
+
         overflow: visible;
     }
     .social ul {
         padding-left: 0;
-
         translate: 0;
-        position: static;
+        position: relative;
+        z-index: 10;
     }
     .social::after {
         --triangle-size: 25px;
@@ -201,10 +219,26 @@ p {
         left: 50%;
         translate: -50%;
         rotate: 45deg;
+        z-index: 1;
     }
     .social.active {
         bottom: 160px;
         left: 50%;
         translate: -50%;
+        opacity: 1;
+    }
+
+    .share {
+        position: static;
+    }
+    .share.active {
+        top: 100px;
+    }
+    .share_plugin {
+        position: relative;
+        top: 0;
+
+        width: unset;
+        height: unset;
     }
 }

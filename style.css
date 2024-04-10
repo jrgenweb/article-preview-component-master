@@ -26,14 +26,14 @@ body {
   box-sizing: border-box;
 }
 
-h2 {
+h1 {
   font-size: 1rem;
   letter-spacing: 0.2px;
   line-height: 1.5rem;
   font-weight: var(--fw-700);
 }
 
-h3 {
+h2 {
   font-size: 0.8125rem;
   font-weight: var(--fw-700);
   letter-spacing: 0.12px;
@@ -178,7 +178,7 @@ p {
     place-content: center;
     min-height: 100vh;
   }
-  h2 {
+  h1 {
     font-size: 1.25rem;
     letter-spacing: 0.25px;
     line-height: 28px;

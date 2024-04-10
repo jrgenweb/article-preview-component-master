@@ -37,7 +37,7 @@ Users should be able to:
 ### Built with
 
 - Semantic HTML5 markup
-- CSS custom properties
+- CSS custom properties, animation, transition
 - Flexbox
 - SCSS
 - Mobile-first workflow

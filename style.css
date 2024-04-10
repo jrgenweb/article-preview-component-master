@@ -165,11 +165,11 @@ p {
 .social.active {
   opacity: 1;
   visibility: visible;
-}
-.social.active ul {
-  translate: 0;
-  transition: translate var(--transition-delay) ease;
-  transition-delay: var(--transition-delay);
+  /*   ul {
+      translate: 0;
+      transition: translate var(--transition-delay) ease;
+      transition-delay: var(--transition-delay);
+  } */
 }
 
 @media (min-width: 37.5rem) {
@@ -240,23 +240,44 @@ p {
   }
   .share_plugin {
     position: relative;
-    background-color: red;
-  }
-  .share_plugin:has(.social.active) {
-    display: inline-block;
-    position: relative;
-    width: auto;
-    height: auto;
-    background-color: red;
   }
 }
+/* animations */
 @media (prefers-reduced-motion: no-preference) {
-  .social {
-    /* transition: opacity var(--transition-delay); */
+  .social.active {
+    visibility: visible;
+    animation: fade_animation var(--transition-delay) forwards;
   }
   .social.active ul {
     translate: 0;
     transition: translate var(--transition-delay) ease;
     transition-delay: var(--transition-delay);
+  }
+  .social.active ul li a svg {
+    transition: scale var(--transition-delay) ease;
+  }
+  .social.active ul li a:hover svg {
+    scale: 1.1;
+  }
+}
+/* on large screen*/
+/* 
+@media (prefers-reduced-motion: no-preference) and (min-width: 37.5rem) {
+    .social.active {
+        visibility: visible;
+        animation: fade_animation var(--transition-delay) forwards;
+        ul {
+            transition: none;
+        }
+    }
+}
+ */
+@keyframes fade_animation {
+  from {
+    visibility: visible;
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }/*# sourceMappingURL=style.css.map */
